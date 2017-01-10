@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="controller.js"></script>
+    </head>
+
+    <body ng-app="githubApp">
+        <div ng-controller="githubController">
+            <form name="githubSearch">
+                <input type="text" ng-model="searchUser" name="searchUser" required>
+                <input type="submit" name="submitUser">
+            </form>
+            
+            <div> 
+                <img src="{{user.avatar_url}}" alt="">
+                <h2>{{user.name}}</h2>
+
+                <!--<div ng-repeat="repos in user.">
+
+                </div>-->
+            </div>
+        </div>
+    </body>
+
+</html>
