@@ -2,7 +2,7 @@
 (function (){
     var app = angular.module("githubApp", []);
     
-    var githubController = function ($scope, $http, $interval, $log){
+    var githubController = function ($scope, $http, $interval, $log, $anchorScroll, $location){
         var decrementCounter = function (){
             $scope.countdown -= 1;
             if($scope.countdown < 1 ) $scope.search($scope.searchUser);
@@ -12,6 +12,8 @@
         };
         var repoSuccess = function (response){
             $scope.repos = response.data;
+            $location.hash("userDetails");
+            $anchorScroll();
         }
         var repoFail = function (error){
             $scope.error = "no repos found";
@@ -41,5 +43,5 @@
         timer();
     };
 
-    app.controller("githubController", ["$scope","$http", "$interval", "$log", githubController]);
+    app.controller("githubController", ["$scope","$http", "$interval", "$log", "$anchorScroll", "$location", githubController]);
 }());
