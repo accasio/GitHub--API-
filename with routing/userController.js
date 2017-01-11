@@ -1,4 +1,3 @@
-"use strict";
 (function() {
     var githubController = function($scope, $github, $interval, $log, $anchorScroll, $location) {
         var decrementCounter = function() {
@@ -40,4 +39,6 @@
         timer();
     };
     angular.module("githubApp").controller("githubController", githubController);
+
+
 }());
