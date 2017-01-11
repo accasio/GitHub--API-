@@ -3,6 +3,7 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="github.js"></script>
     <script src="controller.js"></script>
     <style>
         table {
@@ -10,21 +11,23 @@
             border-collapse: collapse;
             width: 100%;
         }
-
+        
         th {
             cursor: pointer;
         }
-        td, th {
+        
+        td,
+        th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
-            
         }
-
+        
         tr:nth-child(even) {
             background-color: #dddddd;
         }
-        img{
+        
+        img {
             display: block;
             height: auto;
             margin-left: auto;
@@ -33,25 +36,37 @@
             width: 10%;
         }
     </style>
+
 </head>
 
 <body ng-app="githubApp">
     <div ng-controller="githubController">
         <form name="githubSearch">
             <input type="text" ng-model="searchUser" name="searchUser" required>
-            <input type="submit" name="submitUser" ng-click="search(searchUser)">    {{countdown}}
+            <input type="submit" name="submitUser" ng-click="search(searchUser)"> {{countdown}}
         </form>
         <div>{{error}}</div>
         <div id="userDetails">
-            <h2 style="text-align: center"><img src="{{user.avatar_url}}" alt="" >
-            {{user.name}}</h2>
+            <h2 style="text-align: center"><img src="{{user.avatar_url}}" alt=""> {{user.name}}
+            </h2>
             <table>
-                <th ng-click="reorder('name')"><div ng-show="ascending">Name &#9650;</div><div ng-hide="ascending">Name &#9660;</div></th>
-                <th ng-click="reorder('description')"><div ng-show="ascending">Description &#9650;</div><div ng-hide="ascending">Description &#9660;</div></th>
-                <th ng-click="reorder('stargazers_count')"><div ng-show="ascending">Stars &#9650;</div><div ng-hide="ascending">Stars &#9660;</div></th>
+                <th ng-click="reorder('name')">
+                    <div ng-show="ascending">Name &#9650;</div>
+                    <div ng-hide="ascending">Name &#9660;</div>
+                </th>
+                <th ng-click="reorder('description')">
+                    <div ng-show="ascending">Description &#9650;</div>
+                    <div ng-hide="ascending">Description &#9660;</div>
+                </th>
+                <th ng-click="reorder('stargazers_count')">
+                    <div ng-show="ascending">Stars &#9650;</div>
+                    <div ng-hide="ascending">Stars &#9660;</div>
+                </th>
                 <tr ng-repeat="repo in repos | orderBy: orderByField:ascending">
                     <td><a ng-href="{{repo.html_url}}">{{repo.name}}</a></td>
-                    <td>{{repo.description}}<div ng-if="!repo.description" style="font-style: italic">No description available.</div></td>
+                    <td>{{repo.description}}
+                        <div ng-if="!repo.description" style="font-style: italic">No description available.</div>
+                    </td>
                     <td>{{repo.stargazers_count | number}}</td>
                 </tr>
             </table>
