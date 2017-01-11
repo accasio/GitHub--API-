@@ -21,5 +21,5 @@
     };
 
     var app = angular.module("githubApp", []);
-    app.factory("github", github);
+    app.factory("$github", github);
 }());
