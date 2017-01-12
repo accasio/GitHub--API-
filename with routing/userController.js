@@ -1,5 +1,5 @@
 (function() {
-    var userController = function($scope, github, $routeParams) {
+    var userController = function($scope, github, $routeParams, $location) {
         var repoSuccess = function(repos) {
             $scope.repos = repos;
         }
@@ -18,12 +18,13 @@
             $scope.ascending = !$scope.ascending;
             $scope.orderByField = elem;
         };
+        $scope.contributor = function(repo) {
+            $location.path("/repo/" + $scope.username + "/" + repo.name);
+        };
         $scope.orderByField = "name"
         $scope.username = $routeParams.username;
         $scope.ascending = false;
         github.getUser($scope.username).then(userSuccess, userFail);
     };
     angular.module("githubApp").controller("userController", userController);
-
-
 }());

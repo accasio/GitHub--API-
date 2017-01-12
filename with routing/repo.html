@@ -1,0 +1,10 @@
+<div>
+    <table>
+        <th>Name</th>
+        <th>Contributions</th>
+        <tr ng-repeat="contributor in contributors">
+            <td><img ng-src="contributor.avatar_url" alt="">{{contributor.login}}</td>
+            <td>{{contributor.contributions | number}}</td>
+        </tr>
+    </table>
+</div>
