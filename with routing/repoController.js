@@ -1,7 +1,6 @@
 (function() {
     var repoController = function($scope, github, $routeParams) {
         var contributeSuccess = function(data) {
-            console.log(data);
             $scope.contributors = data;
         };
         var contributeFail = function(err) {
