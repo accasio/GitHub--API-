@@ -1,26 +1,20 @@
 "use strict";
 (function() {
-    var githubController = function($scope, $interval, $location) {
+    var mainController = function($scope, $interval, $location) {
         var decrementCounter = function() {
             $scope.countdown -= 1;
-            if ($scope.countdown < 1) $scope.search($scope.searchUser);
+            if ($scope.countdown < 1) $scope.search($scope.username);
         };
         var timer = function() {
             $interval(decrementCounter, 1000, $scope.countdown);
         };
 
         $scope.search = function(username) {
-            $log.info(username);
-
-            //re route here
+            $location.path("/user/" + username);
         };
-        $scope.reorder = function(elem) {
-            $scope.ascending = !$scope.ascending;
-            $scope.orderByField = elem;
-        };
-        $scope.searchUser = "angular";
+        $scope.username = "angular";
         $scope.countdown = 5;
         timer();
     };
-    angular.module("githubApp").controller("githubController", githubController);
+    angular.module("githubApp").controller("mainController", mainController);
 }());

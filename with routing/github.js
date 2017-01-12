@@ -20,6 +20,5 @@
         };
     };
 
-    var app = angular.module("githubApp", []);
-    app.factory("$github", github);
+    angular.module("githubApp").factory("github", github);
 }());

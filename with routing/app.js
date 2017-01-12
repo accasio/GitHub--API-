@@ -1,10 +1,18 @@
 (function() {
     var app = angular.module('githubApp', ['ngRoute']);
     app.config(function($routeProvider) {
-        $routerProvider
+        $routeProvider
             .when("/main", {
                 templateUrl: "main.html",
                 controller: "mainController"
+            })
+            .when("/user/:username", {
+                templateUrl: "user.html",
+                controller: "userController"
+            })
+            .when("/user/:username/:repo", {
+                templateUrl: "repo.html",
+                controller: "repoController"
             })
             .otherwise({ redirectTo: "/main" });
     });
